@@ -8,9 +8,23 @@
 var Letter = require("./letter.js");
 var inquirer = require('inquirer');
 
-function Word(currentWord) {
+function Word(nextWord) {
 // An array of new Letter objects representing the letters of the underlying word
-var letterOne = new Letter('a');
-this.currentWord = [];
+this.characters = [];
+this.nextWord = nextWord
+for (var i = 0; i < this.nextWord.length; i++) {
+  var testLetter = new Letter (this.nextWord[i]);
+  this.characters.push(testLetter);
 }
-console.log(new Letter('a'));
+// A function that returns a string representing the word. This should call the function on each letter object (the first function defined in Letter.js) that displays the character or an underscore and concatenate those together.
+this.revealWord = function(){
+  for (var i = 0; i < this.nextWord.length; i++) {
+    var addedChar = new Letter(this.nextWord[i]);
+    this.characters.push(addedChar);
+  }
+}
+}
+var testWord =  new Word ('sarahstewart');
+console.log(testWord);
+// A function that takes a character as an argument and calls the guess function on each letter object (the second function defined in Letter.js)
+module.exports = Word;
